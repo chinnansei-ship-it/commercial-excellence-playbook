@@ -29,15 +29,15 @@
   <footer><span><b>COMMERCIAL EXCELLENCE</b> · PLAYBOOK · 南星版</span><span>让每一次分析，都通向一个更好的商业决策。</span><a href="#top">回到顶部 ↑</a></footer>
   <script>
     const chapters=[
-      ["01","库存管理","Inventory Management","核心","2 篇",["库存金额 vs 库存天数","库存分析框架","Call Down 判断逻辑"],"#58a599"],
-      ["02","进销联动","Sell-in / Sell-out","待建立","规划中",["IMS","Offtake","Forecast Accuracy"],"#6d9fd2"],
+      ["01","库存管理","Inventory Management","核心","2 篇",["库存金额 vs 库存天数","库存分析框架","Call Down 判断逻辑"],"#58a599","https://chinnansei-ship-it.github.io/commercial-excellence-playbook/inventory/"],
+      ["02","进销联动","Sell-in / Sell-out","核心","1 篇",["Offtake 数据可信度","覆盖率与代表性","模型与外推验证"],"#6d9fd2","https://chinnansei-ship-it.github.io/commercial-excellence-playbook/offtake-data-trust/"],
       ["03","KPI 与指标拆分","KPI & Target Allocation","待建立","规划中",["指标拆分","Phasing","Contribution Analysis"],"#9086c9"],
       ["04","卓越运营工具箱","Commercial Excellence Toolkit","待建立","规划中",["Variance","Mix","Waterfall"],"#e89a5d"],
       ["05","零售药房业务","Retail Pharmacy Business","待建立","规划中",["连锁经营","EC 逻辑","DRG / DIP"],"#cb7e7e"],
       ["06","沟通与领导力","Communication & Leadership","待建立","规划中",["汇报","商业故事","Stakeholder Management"],"#c8a84e"],
       ["07","案例库","Case Library","案例","持续更新",["真实业务案例","完整分析过程","管理层表达"],"#697978"]
     ];let filter="全部";const grid=document.querySelector("#grid"),empty=document.querySelector("#empty"),search=document.querySelector("#search");
-    function render(){const q=search.value.toLowerCase();const list=chapters.filter(c=>(filter==="全部"||c[3]===filter)&&c.join(" ").toLowerCase().includes(q));grid.innerHTML=list.map(c=>{const content=`<div class="cardhead"><strong>${c[0]}</strong><span class="badge">${c[4]}</span></div><h3>${c[1]}</h3><div class="en">${c[2]}</div><div class="tags">${c[5].map(t=>`<span>${t}</span>`).join("")}</div><div class="enter">${c[3]==="待建立"?"查看规划":"点击进入库存专题"} ↗</div>`;return c[0]==="01"?`<a class="card" style="--accent:${c[6]}" href="https://chinnansei-ship-it.github.io/commercial-excellence-playbook/inventory/" aria-label="进入库存管理专题">${content}</a>`:`<article class="card" style="--accent:${c[6]}">${content}</article>`}).join("");empty.style.display=list.length?"none":"block"}search.addEventListener("input",render);document.querySelectorAll(".filters button").forEach(b=>b.addEventListener("click",()=>{document.querySelector(".filters .active").classList.remove("active");b.classList.add("active");filter=b.dataset.filter;render()}));render();
+    function render(){const q=search.value.toLowerCase();const list=chapters.filter(c=>(filter==="全部"||c[3]===filter)&&c.join(" ").toLowerCase().includes(q));grid.innerHTML=list.map(c=>{const content=`<div class="cardhead"><strong>${c[0]}</strong><span class="badge">${c[4]}</span></div><h3>${c[1]}</h3><div class="en">${c[2]}</div><div class="tags">${c[5].map(t=>`<span>${t}</span>`).join("")}</div><div class="enter">${c[7]?"点击进入专题":"查看规划"} ↗</div>`;return c[7]?`<a class="card" style="--accent:${c[6]}" href="${c[7]}" aria-label="进入${c[1]}专题">${content}</a>`:`<article class="card" style="--accent:${c[6]}">${content}</article>`}).join("");empty.style.display=list.length?"none":"block"}search.addEventListener("input",render);document.querySelectorAll(".filters button").forEach(b=>b.addEventListener("click",()=>{document.querySelector(".filters .active").classList.remove("active");b.classList.add("active");filter=b.dataset.filter;render()}));render();
   </script>
 </body>
 </html>
